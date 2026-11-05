@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Central ColorHunt Palette: #E5CB90 | #FFF3C8 | #34A99D | #458393 */
+  --color-cream: #FFF3C8;
+  --color-sand: #E5CB90;
+  --color-teal: #34A99D;
+  --color-ocean: #458393;
+
+  --color-ocean-deep: #1E434D;
+  --color-ocean-header: #26525E;
+  --color-canvas-warm: #F8F3E5;
+  --color-surface-sand: #FAF3E3;
+  --color-surface-cream: #FFFDF7;
+
+  --color-teal-hover: #298E84;
+  --color-teal-soft: #E6F6F4;
+  --color-ocean-soft: #EDF5F7;
+  --color-sand-soft: #F5ECCF;
+  --color-cream-soft: #FFF3C8;
+
+  --color-theme-dark: #14252D;
+  --color-theme-muted: #56727D;
+}
+
+:root {
+  color-scheme: light;
+  --color-cream: #FFF3C8;
+  --color-sand: #E5CB90;
+  --color-teal: #34A99D;
+  --color-ocean: #458393;
+
+  --bg-app: #F8F3E5;
+  --bg-surface: #FFFDF7;
+  --text-main: #14252D;
+  --text-muted: #56727D;
+}
+
+/* Custom smooth scrollbars with prominent ocean/sand tint */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(69, 131, 147, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34A99D;
+}
+
+/* Soundwave animations for active voice rooms */
+@keyframes soundwave-1 {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+@keyframes soundwave-2 {
+  0%, 100% { height: 12px; }
+  50% { height: 5px; }
+}
+@keyframes soundwave-3 {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+@keyframes soundwave-4 {
+  0%, 100% { height: 14px; }
+  50% { height: 7px; }
+}
+
+.animate-wave-1 { animation: soundwave-1 0.8s ease-in-out infinite; }
+.animate-wave-2 { animation: soundwave-2 0.7s ease-in-out infinite 0.15s; }
+.animate-wave-3 { animation: soundwave-3 0.9s ease-in-out infinite 0.25s; }
+.animate-wave-4 { animation: soundwave-4 0.75s ease-in-out infinite 0.1s; }
+
+/* Drag handle indicator */
+.drag-handle-active {
+  background-color: #34A99D !important;
+}
+
+/* Code editor syntax highlight strictly using central palette */
+.code-keyword { color: #34A99D; font-weight: 700; }
+.code-def { color: #E5CB90; font-weight: 600; }
+.code-string { color: #FFF3C8; }
+.code-comment { color: #6C8E97; font-style: italic; }
+.code-number { color: #E5CB90; font-weight: 600; }
