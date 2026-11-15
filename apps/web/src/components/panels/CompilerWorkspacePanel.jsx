@@ -15,7 +15,7 @@ import {
   Zap,
   CheckCircle2
 } from 'lucide-react';
-import { STARTER_CODE } from '../data/mockData';
+import { STARTER_CODE } from '@/data';
 
 export default function CompilerWorkspacePanel({
   activeRoom,

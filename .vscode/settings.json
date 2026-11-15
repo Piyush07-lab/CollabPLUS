@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.experimental.configFile": "apps/web/src/index.css",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/package-lock.json": true
+  }
+}

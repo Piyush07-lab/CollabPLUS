@@ -1,3 +1,5 @@
+# Collab+ Product Vision
+
 ### What should it do?
 It must be a way to connect with my friends like discord, chat like discord, share pictures, screenshare, video meet, voice calls, mini social games? maybe!, github ui, poll, quiz, an active Ai bot for each chat room like discord, wakatime UI?, common compiler for coding exercise, Leetcode connect, goal tracking.
 All this, with user login and authentication, yes. That would be fire. 

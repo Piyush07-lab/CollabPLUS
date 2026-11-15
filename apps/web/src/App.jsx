@@ -1,20 +1,23 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import TopBar from './components/TopBar';
-import RoomsPanel from './components/RoomsPanel';
-import ChatPanel from './components/ChatPanel';
-import CommandCenterPanel from './components/CommandCenterPanel';
-import CompilerWorkspacePanel from './components/CompilerWorkspacePanel';
-import BottomBar from './components/BottomBar';
-import CommandPaletteModal from './components/CommandPaletteModal';
-import SettingsModal from './components/SettingsModal';
-import CreateRoomModal from './components/CreateRoomModal';
-import { 
-  INITIAL_ROOMS, 
-  INITIAL_MESSAGES, 
-  INITIAL_FRIENDS, 
-  INITIAL_DEV_FEEDS, 
-  STARTER_CODE 
-} from './data/mockData';
+import { TopBar, BottomBar } from '@/components/layout';
+import {
+  RoomsPanel,
+  ChatPanel,
+  CommandCenterPanel,
+  CompilerWorkspacePanel
+} from '@/components/panels';
+import {
+  CommandPaletteModal,
+  SettingsModal,
+  CreateRoomModal
+} from '@/components/modals';
+import {
+  INITIAL_ROOMS,
+  INITIAL_MESSAGES,
+  INITIAL_FRIENDS,
+  INITIAL_DEV_FEEDS,
+  STARTER_CODE
+} from '@/data';
 
 export default function App() {
   // ==================== PANEL LAYOUT STATE ====================

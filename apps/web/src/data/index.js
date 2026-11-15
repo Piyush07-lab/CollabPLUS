@@ -1,0 +1,7 @@
+export {
+  INITIAL_ROOMS,
+  INITIAL_MESSAGES,
+  INITIAL_FRIENDS,
+  INITIAL_DEV_FEEDS,
+  STARTER_CODE
+} from './mockData';
