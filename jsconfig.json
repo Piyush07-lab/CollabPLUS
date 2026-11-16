@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./apps/web/src/*"],
-      "@collab/shared": ["./packages/shared/src/index.js"]
+      "@repo/shared": ["./packages/shared/src/index.js"]
     },
     "jsx": "react-jsx",
     "module": "ESNext",

@@ -4,7 +4,7 @@ import {
   ROOM_CATEGORIES,
   SUPPORTED_LANGUAGES,
   WS_EVENTS
-} from '../../../../packages/shared/src/index.js';
+} from '@repo/shared';
 
 /**
  * Send a JSON response with standard headers.

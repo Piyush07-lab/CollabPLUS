@@ -1,15 +1,15 @@
-# Collab+ Project Index & Navigation Map
+# Project Index & Navigation Map
 
-A structured index of the **Collab+** monorepo, workspace packages, path aliases, component registry, and state architecture.
+A structured index of this **Turborepo + pnpm** monorepo (temporary working title: **Collab+**), workspace packages, path aliases, component registry, and state architecture.
 
 ---
 
 ## 1. Monorepo Topology
 
 ```text
-Collab+/
+<repo-root>/
 ├── apps/
-│   ├── web/                          # @collab/web — Vite + React 19 + Tailwind CSS v4 frontend
+│   ├── web/                          # @repo/web — Vite + React 19 + Tailwind CSS v4 frontend
 │   │   ├── public/                   # Static favicons & SVG sprite assets
 │   │   ├── src/
 │   │   │   ├── assets/               # Bundled image & SVG assets
@@ -28,22 +28,22 @@ Collab+/
 │   │   │   └── theme.js              # Central ColorHunt palette JS constants (THEME)
 │   │   ├── index.html                # HTML shell with Google Fonts (Plus Jakarta Sans, JetBrains Mono)
 │   │   ├── jsconfig.json             # Web workspace path alias IntelliSense
-│   │   ├── package.json              # @collab/web manifest
-│   │   └── vite.config.js            # Vite config with @/ and @collab/shared aliases
+│   │   ├── package.json              # @repo/web manifest
+│   │   └── vite.config.js            # Vite config with @/ and @repo/shared aliases
 │   │
-│   └── api/                          # @collab/api — Node.js HTTP/REST & WS readiness scaffold
+│   └── api/                          # @repo/api — Node.js HTTP/REST & WS readiness scaffold
 │       ├── src/
 │       │   ├── routes/index.js       # Health, room metadata, and compiler capabilities handlers
 │       │   └── index.js              # HTTP server entry point (port 4000)
-│       ├── package.json              # @collab/api manifest
+│       ├── package.json              # @repo/api manifest
 │       └── README.md
 │
 ├── packages/
-│   └── shared/                       # @collab/shared — Shared domain constants & event names
+│   └── shared/                       # @repo/shared — Shared brand config, constants & event names
 │       ├── src/
-│       │   ├── constants.js          # APP_NAME, ROOM_CATEGORIES, SUPPORTED_LANGUAGES, WS_EVENTS
+│       │   ├── constants.js          # BRAND_CONFIG, APP_NAME, ROOM_CATEGORIES, SUPPORTED_LANGUAGES, WS_EVENTS
 │       │   └── index.js              # Shared package barrel export
-│       ├── package.json              # @collab/shared manifest
+│       ├── package.json              # @repo/shared manifest
 │       └── README.md
 │
 ├── docs/
@@ -53,10 +53,13 @@ Collab+/
 │   └── VISION.md                     # Product vision & roadmap notes
 │
 ├── .vscode/settings.json             # Tailwind config path & search exclusions
-├── .gitignore                        # Workspace ignores
+├── .gitignore                        # Workspace & Turbo cache ignores
 ├── .oxlintrc.json                    # Oxlint rules (react, oxc)
 ├── jsconfig.json                     # Root IDE path mapping for Go-to-Definition
-├── package.json                      # Root npm workspaces & monorepo scripts
+├── package.json                      # Root scripts (turbo run ...)
+├── pnpm-lock.yaml                    # pnpm deterministic lockfile
+├── pnpm-workspace.yaml               # pnpm workspace globs (apps/*, packages/*)
+├── turbo.json                        # Turborepo v2 task pipeline & caching config
 └── README.md                         # Monorepo overview & quickstart
 ```
 
@@ -74,7 +77,7 @@ Configured in [`apps/web/vite.config.js`](../apps/web/vite.config.js), [`apps/we
 | `@/components/panels` | `apps/web/src/components/panels/index.js` | `RoomsPanel`, `ChatPanel`, `CompilerWorkspacePanel`, `CommandCenterPanel` |
 | `@/components/modals` | `apps/web/src/components/modals/index.js` | `CommandPaletteModal`, `CreateRoomModal`, `SettingsModal` |
 | `@/data` | `apps/web/src/data/index.js` | `INITIAL_ROOMS`, `INITIAL_MESSAGES`, `INITIAL_FRIENDS`, `INITIAL_DEV_FEEDS`, `STARTER_CODE` |
-| `@collab/shared` | `packages/shared/src/index.js` | Cross-workspace constants (`ROOM_CATEGORIES`, `SUPPORTED_LANGUAGES`, `WS_EVENTS`) |
+| `@repo/shared` | `packages/shared/src/index.js` | Cross-workspace constants (`BRAND_CONFIG`, `APP_NAME`, `ROOM_CATEGORIES`, `SUPPORTED_LANGUAGES`, `WS_EVENTS`) |
 
 ---
 
@@ -127,7 +130,16 @@ All top-level state lives in [`apps/web/src/App.jsx`](../apps/web/src/App.jsx):
 
 ---
 
-## 5. Theme & Design System
+## 5. Rebranding / Changing Project Name
+
+The current title **Collab+** is a temporary prototype name. To make future rebranding painless:
+
+1. **Internal Workspace Scopes Stay Stable**: Packages use the brand-neutral `@repo/*` convention (`@repo/web`, `@repo/api`, `@repo/shared`), so renaming the product never requires rewriting imports across workspaces.
+2. **Central Brand Config**: Update `BRAND_CONFIG` (`name`, `shortName`, `botName`, `tagline`) in [`packages/shared/src/constants.js`](../packages/shared/src/constants.js) when choosing the final product name, then update static HTML metadata in [`apps/web/index.html`](../apps/web/index.html) and UI copy as needed.
+
+---
+
+## 6. Theme & Design System
 
 Based on the ColorHunt palette archived in [`docs/assets/color-palette.png`](./assets/color-palette.png):
 

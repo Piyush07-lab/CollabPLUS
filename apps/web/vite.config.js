@@ -15,7 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@collab/shared': path.resolve(__dirname, '../../packages/shared/src/index.js'),
+      '@repo/shared': path.resolve(__dirname, '../../packages/shared/src/index.js'),
     },
   },
 });

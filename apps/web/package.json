@@ -1,16 +1,16 @@
 {
-  "name": "@collab/web",
+  "name": "@repo/web",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "oxlint",
+    "lint": "oxlint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@collab/shared": "*",
+    "@repo/shared": "workspace:*",
     "@tailwindcss/vite": "^4.3.3",
     "lucide-react": "^1.61.0",
     "react": "^19.3.1",

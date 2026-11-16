@@ -1,5 +1,5 @@
 import http from 'node:http';
-import { APP_NAME, WS_EVENTS } from '../../../packages/shared/src/index.js';
+import { APP_NAME, WS_EVENTS } from '@repo/shared';
 import { handleApiRequest } from './routes/index.js';
 
 const PORT = Number(process.env.PORT) || 4000;
