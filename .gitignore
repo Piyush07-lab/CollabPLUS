@@ -16,6 +16,10 @@ dist-ssr
 **/dist-ssr
 .turbo
 **/.turbo
+# Environment & Local Files
+.env
+.env.*
+!.env.example
 *.local
 
 # Editor directories and files

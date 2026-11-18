@@ -1,31 +1,66 @@
 # Collab+ (Working Title) — Product Vision
 
-> **Note:** `Collab+` is a temporary prototype working title and is subject to change at any time during development. All internal monorepo packages intentionally use the brand-neutral `@repo/*` scope (`@repo/web`, `@repo/api`, `@repo/shared`), while the display name and branding live centrally in [`packages/shared/src/constants.js`](../packages/shared/src/constants.js) (`BRAND_CONFIG`).
+> **Note:** `Collab+` is a temporary prototype working title and is subject to change at any time during development (earlier naming ideas include `chill` and `chill-z`). All internal monorepo packages intentionally use the brand-neutral `@repo/*` scope (`@repo/web`, `@repo/api`, `@repo/shared`), while display branding lives centrally in [`packages/shared/src/constants.js`](../packages/shared/src/constants.js) (`BRAND_CONFIG`).
 
-### What should it do?
-It must be a way to connect with my friends like discord, chat like discord, share pictures, screenshare, video meet, voice calls, mini social games? maybe!, github ui, poll, quiz, an active Ai bot for each chat room like discord, wakatime UI?, common compiler for coding exercise, Leetcode connect, goal tracking.
-All this, with user login and authentication, yes. That would be fire. 
+---
 
-### What would we call it?
-We all be vibing and chilling here or coding. Can't call it vibe&code for obvious reasons.So we could just call it chill or chill-z. Something like that. For now name it Collab+ project (temporary working title).
+## 1. Product Purpose
 
-### Foundation
-Let's start with a page from where everything will branch. The home page. We will be doing it in Frontend > Backend development where we make the frontend and then do the wiring of backend in iterations.
+Create a social and developer hangout where friends connect, hang out, and code together in one unified workspace:
 
-### Core features:
-1. Communication [Real time chat, Voice chats, Voice calls/meet room, video call/meet room, media message(images, videos, GIFs, Stickers, etc), Data model messaging(spreadsheet, txt, ppt, mail format, code snippets, etc)]
-2. File Sharing [All file types]
-3. Activity Tracking [Coding tracking(through waketime), project tracking(through waketime, GitHub, IDEs, GitLab, etc.), Activity tracking(through app plugins like Instagram feed sharing (activity notification(optionally available to be turned on or off)), facebook feed sharing (activity notification(optionally available to be turned on or off)), X(twitter) feed, Activity syncronisation engine(custom engine to sync all activity to create an log map of activity of the user, visible to user by default and optional for the room), etc]
-4. AI integration [Room/Space manager, File Manager, Schedule Manager, Office Manager]
+- Discord-style real-time chat, voice lounges, video meets, and screen sharing
+- Rich media sharing, mini social games, interactive polls, and coding quizzes
+- An active room AI companion (`CollabBot AI`) inside every chat space
+- Built-in developer workflows: shared code scratchpad/compiler, GitHub UI & feeds, LeetCode sync, WakaTime productivity tracking, and goal tracking
+- Complete user login and industry-standard authentication
 
-### Multi-Tenancy & Permission:
-1. Users will be gouped in Spaces, which includes group types-[Lounge, Rooms, Workspace, Channels, Projects]. A "Space" is a term use by this project that refers to a protected server space of any scale where more than 1 users are connected and are sharing resources owned by either or the platform that is *Collab+.
-2. A user can be associated with more than one group of different spaces or the same space. A single space can contain multiple group types.
-3. RBAC might include Owner, Admin, Moderator and Memeber.*
- 
-### Security & Privacy:
-1. End-to-end encryption will enabled for all messages in all spaces by default. Only the owner will have the authority to disable it. Users can still keep the encryption enables for a direct message even within the same space that has the encryption disabled.
-2. All data will be end to end encrypted and authentication data will be encrypted to industry standard.
+---
 
-### Tech Stack / ORM:
-In disscussion.
+## 2. Iterative Foundation (`Frontend → Backend`)
+
+Development starts from a single unified home workspace from which all features branch. The project follows an iterative **Frontend → Backend** lifecycle:
+
+1. **Phase 1 (Completed):** Establish the monorepo structure, shared contracts, and interactive 3-split frontend prototype (`@repo/web`).
+2. **Phase 2 (Active):** Iteratively wire real authentication, persistence, real-time messaging/voice, sandboxed code execution, and activity integrations in `@repo/api` and `@repo/shared`. See [`docs/roadmap/PHASE_2_SCOPE.md`](./roadmap/PHASE_2_SCOPE.md).
+
+---
+
+## 3. Four Core Feature Pillars
+
+1. **Communication**
+   - Real-time text chat, voice chats, voice call/meet rooms, and video call/meet rooms with screen sharing
+   - Media messages (`image`, `video`, `gif`, `sticker`)
+   - Structured data-model messaging (`spreadsheet`, `txt`, `ppt`, `mail`, `code_snippet`) — codified in [`packages/shared/src/domain/messaging.js`](../packages/shared/src/domain/messaging.js)
+2. **File Sharing**
+   - Support for sharing and previewing all file types across Spaces and Direct Messages
+3. **Activity Tracking & Synchronisation Engine**
+   - **Coding Tracking:** WakaTime integration
+   - **Project Tracking:** GitHub, GitLab, IDE telemetry, and LeetCode sync
+   - **Social & App Plugins:** Optional activity feed notifications (Instagram, Facebook, X/Twitter) that users can toggle on or off
+   - **Activity Synchronisation Engine:** A custom synchronization engine that aggregates activity into a unified user log map (visible to the user by default, opt-in for room sharing) — see [`packages/shared/src/domain/activity.js`](../packages/shared/src/domain/activity.js)
+4. **AI Integration (`CollabBot AI`)**
+   - Dedicated AI assistants structured around four operational modules (`room_manager`, `file_manager`, `schedule_manager`, `office_manager`) — see [`packages/shared/src/domain/ai.js`](../packages/shared/src/domain/ai.js)
+
+---
+
+## 4. Multi-Tenancy & Permissions (Spaces, Building Metaphor & RBAC)
+
+1. **Spaces ("The Floor"):** Users are organized into **Spaces** — protected multi-user server environments of any scale where connected users share communication channels and resources owned by a Space Owner or the platform.
+2. **Spatial Topology & Group Types:** Each Space contains **1 mandatory `LOUNGE`** (auto-joined by all members), **0..N optional `PROJECTS`**, **1..N `ROOMS`** (strict invite-only), **1..N `WORKSPACES`** (peer-invite open), **0..N `CHANNELS`** (cross-level bridges via polymorphic links), and **`DM` Direct Threads**.
+3. **Cross-Space Membership:** Users can belong to multiple groups across different Spaces or within the same Space.
+4. **Role-Based Access Control (RBAC):** Core roles are `OWNER`, `ADMIN`, `MODERATOR`, and `MEMBER`, defined in [`packages/shared/src/domain/spaces.js`](../packages/shared/src/domain/spaces.js) and detailed in [`docs/architecture/DOMAIN_MODEL.md`](./architecture/DOMAIN_MODEL.md).
+
+---
+
+## 5. Security & Privacy Commitments
+
+1. **End-to-End Encryption (E2EE) by Default:** All messages across all Spaces are end-to-end encrypted by default (`spaces.is_e2ee_enabled = true`).
+2. **Owner-Only Space Toggle:** Only the Space **`OWNER`** has authority (`space:toggle_e2ee`) to disable Space-wide E2EE.
+3. **Persistent Direct Message (DM) Encryption:** Even inside a Space where E2EE has been disabled by its Owner, individual users retain E2EE for Direct Messages (`containers.is_e2ee_enforced = true`).
+4. **Zero-Knowledge Storage & AI Boundary:** When E2EE is active, PostgreSQL persists only ciphertext and S3/R2 stores client-encrypted file blobs; AI Managers only index plaintext in unencrypted Spaces or with user consent. See [`docs/architecture/SECURITY_E2EE.md`](./architecture/SECURITY_E2EE.md).
+
+---
+
+## 6. Target Tech Stack & Architecture Blueprint
+
+The Phase 1 monorepo runs **React 19 + Vite 8 + Tailwind CSS v4** (`@repo/web`) and a **Node.js ESM** API scaffold (`@repo/api`) orchestrated by **Turborepo + pnpm**. The finalized Phase 2 target stack specifies **TypeScript (Node.js / Bun) · PostgreSQL 16+ · Drizzle ORM · Redis (Pub/Sub & Presence) · LiveKit (WebRTC) · S3/R2 (Encrypted Object Storage)**. See [`docs/ARCHITECTURE_AND_DB_BLUEPRINT.md`](./ARCHITECTURE_AND_DB_BLUEPRINT.md), [`docs/architecture/DATABASE_DESIGN.md`](./architecture/DATABASE_DESIGN.md), and [`docs/roadmap/MASTER_IMPLEMENTATION_PLAN.md`](./roadmap/MASTER_IMPLEMENTATION_PLAN.md).

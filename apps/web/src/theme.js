@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2026 Collab+ Contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 // Central Color Theme definition based on ColorHunt palette:
 // https://colorhunt.co/palette/e5cb90fff3c834a99d458393
 // Iteration: Dominant Palette Architecture (Rich Ocean, Vibrant Teal, Warm Sand & Cream)

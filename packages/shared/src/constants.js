@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2026 Collab+ Contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 /**
  * Shared domain constants, brand configuration, and protocol definitions.
  *
@@ -39,4 +44,10 @@ export const WS_EVENTS = {
   MESSAGE_SEND: 'message:send',
   CODE_SHARE: 'code:share',
   VOICE_STATE: 'voice:state',
+  SPACE_SYNC: 'space:sync',
+  VOICE_SIGNAL: 'voice:signal',
+  SCREEN_SHARE_STATE: 'screen_share:state',
+  ACTIVITY_SYNC: 'activity:sync',
+  AI_PROMPT: 'ai:prompt',
+  E2EE_KEY_EXCHANGE: 'e2ee:key_exchange',
 };

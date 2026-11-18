@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2026 Collab+ Contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   PanelLeftClose, 

@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2026 Collab+ Contributors
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';

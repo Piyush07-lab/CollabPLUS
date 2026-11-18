@@ -1,15 +1,28 @@
 {
   "name": "@repo/api",
   "version": "0.1.0",
+  "license": "AGPL-3.0-only",
   "private": true,
   "type": "module",
+  "main": "./dist/main.js",
   "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "build": "node --check src/index.js",
+    "dev": "tsc -p tsconfig.build.json && node --watch dist/main.js",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit",
     "lint": "oxlint ."
   },
   "dependencies": {
-    "@repo/shared": "workspace:*"
+    "@nestjs/common": "^12.5.1",
+    "@nestjs/core": "^12.5.1",
+    "@nestjs/platform-fastify": "^12.5.1",
+    "@repo/shared": "workspace:*",
+    "fastify": "^5.12.8",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
   }
 }
