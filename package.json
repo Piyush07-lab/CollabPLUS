@@ -10,6 +10,7 @@
     "dev:web": "turbo run dev --filter=@repo/web",
     "dev:api": "turbo run dev --filter=@repo/api",
     "build": "turbo run build",
+    "build:watch": "turbo watch build",
     "lint": "turbo run lint",
     "preview": "turbo run preview --filter=@repo/web"
   },

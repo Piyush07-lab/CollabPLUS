@@ -36,8 +36,9 @@ apps/api/
 
 ## Scripts
 
-- `pnpm dev:api` (from root) — Runs `turbo run dev --filter=@repo/api` (`tsc -p tsconfig.build.json && node --watch dist/main.js`)
+- `pnpm dev:api` (from root) — Runs `turbo run dev --filter=@repo/api` (performs an initial `tsc -p tsconfig.build.json` build, then runs `tsc --watch` alongside `node --watch dist/main.js`)
 - `pnpm --filter @repo/api build` — Compiles TypeScript sources to `dist/` (`tsc -p tsconfig.build.json`)
+- `pnpm --filter @repo/api build:watch` — Watches `src/**/*.ts` and automatically recompiles to `dist/` on every modification (`tsc -p tsconfig.build.json --watch --preserveWatchOutput`)
 - `pnpm --filter @repo/api start` — Starts the compiled Fastify server (`node dist/main.js`) on `PORT` (default `4000`)
 - `pnpm --filter @repo/api typecheck` — Runs `tsc --noEmit`
 - `pnpm --filter @repo/api lint` — Runs `oxlint .`

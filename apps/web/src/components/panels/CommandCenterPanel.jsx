@@ -21,6 +21,10 @@ export default function CommandCenterPanel({
   devFeeds
 }) {
   // Interactive poll state
+  // FIXME(frontend): Poll vote calculation & display bug to fix during frontend development:
+  // 1. Voting 'spaces' sets `spaces: prev.tabs` instead of incrementing `prev.spaces + 1`.
+  // 2. Initial counts (68 + 32 = 100) do not match `totalVotes: 47`.
+  // 3. Option buttons below render hardcoded '68%' and '32%' instead of dynamic percentages from `pollStats`.
   const [pollVoted, setPollVoted] = useState(null);
   const [pollStats, setPollStats] = useState({
     tabs: 68,
