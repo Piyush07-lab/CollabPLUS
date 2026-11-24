@@ -8,6 +8,7 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { DatabaseModule } from './db/db.module.js';
 import {
+  AuthModule,
   SpacesModule,
   MessagingModule,
   ActivityModule,
@@ -21,6 +22,7 @@ import {
 @Module({
   imports: [
     DatabaseModule,
+    AuthModule,
     SpacesModule,
     MessagingModule,
     ActivityModule,
